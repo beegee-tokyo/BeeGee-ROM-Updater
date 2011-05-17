@@ -7,12 +7,12 @@
   		<TextView
   			android:id="@+id/programNameTextView"
   			android:layout_width="fill_parent"
-  			android:layout_height="50sp"
-  			android:textSize="33sp"
-  			android:text="EleGoS ROM Updater"
-  		/>
+  			android:layout_height="30sp"
+  			android:textSize="25sp"
+  			android:text="BeeGees ROMs"
+  		    android:gravity="center"/>
 		<ListView android:id="@+id/listOfActions"
     		android:layout_width="fill_parent"
     		android:layout_height="fill_parent"
-    	/>
+    	android:background="@drawable/default_wallpaper"/>
 </LinearLayout>

@@ -15,35 +15,39 @@
  * along with ROMUpdater.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.elegosproject.romupdater.types;
+package org.beegee.romupdater.types;
 
-import java.util.List;
-
-public class AvailableVersions {
-	private String full;
-	private List<AvailableVersion> fromVersion;
+public class ROMVersion {
+	private String changelog;
+	private String version;
+	private String uri;
 	
-	public String getFullUri() {
-		return full;
-	}
-	
-	public void setFullUri(String u) {
-		full = u;
-	}
-	
-	public List<AvailableVersion> getAvailableVersions() {
-		return fromVersion;
-	}
-	
-	public void setAvailableVersions(List<AvailableVersion> VersionsList) {
-		fromVersion = VersionsList;
-	}
-	
-	public String getVersionFileName(String version) {
-		for(AvailableVersion av : getAvailableVersions()) {
-			if(av.getVersion() == version)
-				return av.getUri();
+	public String getChangelog() {
+		int pipe;
+		String logs = "";
+		String log = changelog;
+		while((pipe = log.indexOf('|')) != -1) {
+			logs += log.substring(0,pipe)+"\n";
+			log = log.substring(pipe+1);
 		}
-		return "";
+		if(!log.equals("")) logs += log+"\n";
+		return logs;
+	}
+	public void setChangelog(String c) {
+		changelog = c;
+	}
+	
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String v) {
+		version = v;
+	}
+	
+	public String getUri() {
+		return uri;
+	}
+	public void setUri(String u) {
+		uri = u;
 	}
 }

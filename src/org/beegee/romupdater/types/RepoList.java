@@ -1,4 +1,4 @@
-package org.elegosproject.romupdater.types;
+package org.beegee.romupdater.types;
 
 public class RepoList {
 	private String model;

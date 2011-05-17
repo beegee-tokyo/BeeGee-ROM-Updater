@@ -15,27 +15,11 @@
  * along with ROMUpdater.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.elegosproject.romupdater.types;
+package org.beegee.romupdater.types;
 
-public class ROMVersion {
-	private String changelog;
+public class AvailableVersion {
 	private String version;
 	private String uri;
-	
-	public String getChangelog() {
-		int pipe;
-		String logs = "";
-		String log = changelog;
-		while((pipe = log.indexOf('|')) != -1) {
-			logs += log.substring(0,pipe)+"\n";
-			log = log.substring(pipe+1);
-		}
-		if(!log.equals("")) logs += log+"\n";
-		return logs;
-	}
-	public void setChangelog(String c) {
-		changelog = c;
-	}
 	
 	public String getVersion() {
 		return version;
