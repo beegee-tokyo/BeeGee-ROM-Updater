@@ -7,7 +7,7 @@
 		android:key="repository_url"
 		android:title="@string/repository_url_manual"
 		android:summary="@string/repository_url_manual_summary" 
-		android:defaultValue="http://www.desire.giesecke.tk/myrom/" 
+		android:defaultValue="http://desire.giesecke.tk/myrom/" 
 		android:selectable="true" 
 		android:enabled="true"
 	/>

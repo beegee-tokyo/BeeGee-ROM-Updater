@@ -67,80 +67,81 @@ public class ROMUpdater extends ROMSuperActivity {
 					startActivity(preferences);
 					break;
 				// wipe cache
-				case 3:
-					AlertDialog.Builder dialog = new AlertDialog.Builder(
-							ROMUpdater.this);
-					dialog.setMessage(getString(R.string.wipe_cache_message))
-							.setTitle(getString(R.string.wipe_cache))
-							.setCancelable(true)
-							.setPositiveButton(getString(R.string.wipe), new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog, int which) {
-											sdata.setRecoveryOperations(2);
-											RecoveryManager
-													.setupExtendedCommand();
-											RecoveryManager.wipeCache();
-
-											RecoveryManager.rebootRecovery();
-										}
-									})
-							.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog, int which) {
-											dialog.dismiss();
-										}
-									});
-
-					AlertDialog alert = dialog.create();
-					alert.show();
-					break;
-				// wipe data and (eventually) SD-EXT
-				case 4:
-					final AlertDialog.Builder sdext = new AlertDialog.Builder( ROMUpdater.this);
-					sdext.setMessage(getString(R.string.wipe_sdext_too))
-							.setCancelable(false)
-							.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog, int which) {
-											sdata.setRecoveryOperations(3);
-											RecoveryManager
-													.setupExtendedCommand();
-											RecoveryManager.wipeData();
-											RecoveryManager.wipeSDExt();
-
-											RecoveryManager.rebootRecovery();
-										}
-									})
-							.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog, int which) {
-											sdata.setRecoveryOperations(2);
-											RecoveryManager
-													.setupExtendedCommand();
-											RecoveryManager.wipeData();
-
-											RecoveryManager.rebootRecovery();
-										}
-									});
-
-					AlertDialog.Builder dataDialog = new AlertDialog.Builder(ROMUpdater.this);
-					dataDialog
-							.setMessage(getString(R.string.wipe_data_message))
-							.setTitle(getString(R.string.wipe_data))
-							.setCancelable(true)
-							.setPositiveButton(getString(R.string.wipe), new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog, int which) {
-											sdext.create().show();
-										}
-									})
-							.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-										public void onClick(DialogInterface dialog, int which) {
-											dialog.dismiss();
-										}
-									});
-
-					AlertDialog dataAlert = dataDialog.create();
-					dataAlert.show();
-					break;
+//				case 3:
+//					AlertDialog.Builder dialog = new AlertDialog.Builder(
+//							ROMUpdater.this);
+//					dialog.setMessage(getString(R.string.wipe_cache_message))
+//							.setTitle(getString(R.string.wipe_cache))
+//							.setCancelable(true)
+//							.setPositiveButton(getString(R.string.wipe), new DialogInterface.OnClickListener() {
+//										public void onClick(
+//												DialogInterface dialog, int which) {
+//											sdata.setRecoveryOperations(2);
+//											RecoveryManager
+//													.setupExtendedCommand();
+//											RecoveryManager.wipeCache();
+//
+//											RecoveryManager.rebootRecovery();
+//										}
+//									})
+//							.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//										public void onClick(DialogInterface dialog, int which) {
+//											dialog.dismiss();
+//										}
+//									});
+//
+//					AlertDialog alert = dialog.create();
+//					alert.show();
+//					break;
+//				// wipe data and (eventually) SD-EXT
+//				case 4:
+//					final AlertDialog.Builder sdext = new AlertDialog.Builder( ROMUpdater.this);
+//					sdext.setMessage(getString(R.string.wipe_sdext_too))
+//							.setCancelable(false)
+//							.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+//										public void onClick(DialogInterface dialog, int which) {
+//											sdata.setRecoveryOperations(3);
+//											RecoveryManager
+//													.setupExtendedCommand();
+//											RecoveryManager.wipeData();
+//											RecoveryManager.wipeSDExt();
+//
+//											RecoveryManager.rebootRecovery();
+//										}
+//									})
+//							.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+//										public void onClick(DialogInterface dialog, int which) {
+//											sdata.setRecoveryOperations(2);
+//											RecoveryManager
+//													.setupExtendedCommand();
+//											RecoveryManager.wipeData();
+//
+//											RecoveryManager.rebootRecovery();
+//										}
+//									});
+//
+//					AlertDialog.Builder dataDialog = new AlertDialog.Builder(ROMUpdater.this);
+//					dataDialog
+//							.setMessage(getString(R.string.wipe_data_message))
+//							.setTitle(getString(R.string.wipe_data))
+//							.setCancelable(true)
+//							.setPositiveButton(getString(R.string.wipe), new DialogInterface.OnClickListener() {
+//										public void onClick(DialogInterface dialog, int which) {
+//											sdext.create().show();
+//										}
+//									})
+//							.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//										public void onClick(DialogInterface dialog, int which) {
+//											dialog.dismiss();
+//										}
+//									});
+//
+//					AlertDialog dataAlert = dataDialog.create();
+//					dataAlert.show();
+//					break;
 				// Backup the actual system
-				case 5:
+//				case 5:
+				case 3:
 					AlertDialog.Builder backupDialog = new AlertDialog.Builder(ROMUpdater.this);
 					backupDialog
 							.setMessage(getString(R.string.backup_rom_message))
@@ -164,12 +165,14 @@ public class ROMUpdater extends ROMSuperActivity {
 					backupAlert.show();
 					break;
 				// Restore a backup
-				case 6:
+//				case 6:
+				case 4:
 					Intent restore = new Intent(ROMUpdater.this, Restore.class);
 					startActivity(restore);
 					break;
 				// Enter recovery mode (manual operations)
-				case 7:
+//				case 7:
+				case 5:
 					AlertDialog.Builder recoveryDialog = new AlertDialog.Builder(ROMUpdater.this);
 					recoveryDialog
 							.setMessage(getString(R.string.recovery_message))
@@ -199,8 +202,8 @@ public class ROMUpdater extends ROMSuperActivity {
 		versionsList.add(getString(R.string.check_for_updates));
 		versionsList.add(getString(R.string.downloaded_files));
 		versionsList.add(getString(R.string.settings));
-		versionsList.add(getString(R.string.wipe_cache));
-		versionsList.add(getString(R.string.wipe_data));
+//		versionsList.add(getString(R.string.wipe_cache));
+//		versionsList.add(getString(R.string.wipe_data));
 		versionsList.add(getString(R.string.backup_rom));
 		versionsList.add(getString(R.string.restore_rom));
 		versionsList.add(getString(R.string.recovery));

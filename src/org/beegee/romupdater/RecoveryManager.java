@@ -41,6 +41,20 @@ public class RecoveryManager {
 
 //		sdata.addRecoveryMessage("reboot recovery\n");
 //		sdata.addRecoveryMessage("recovery_2 && reboot recovery\n");
+//		sdata.addRecoveryMessage("/system/bin/recovery_2 && /system/bin/toolbox reboot\n");
+		sdata.addRecoveryMessage("rm /cache/recovery/command\n");
+		sdata.addRecoveryMessage("mkdir -p /sdcard/clockworkmod\n");
+		sdata.addRecoveryMessage("echo 1 > /sdcard/clockworkmod/.recoverycheckpoint\n");
+		sdata.addRecoveryMessage("echo start > /proc/ota\n");
+		
+		try {
+			Process p = Runtime.getRuntime().exec("su");
+			OutputStream os = p.getOutputStream();
+			os.write(sdata.getRecoveryMessage().getBytes());
+			os.flush();
+		} catch (Exception e) {
+			Log.e(TAG, "Unable to reboot into recovery");
+		}
 		sdata.addRecoveryMessage("/system/bin/recovery_2 && /system/bin/toolbox reboot\n");
 		try {
 			Process p = Runtime.getRuntime().exec("su");
@@ -64,7 +78,8 @@ public class RecoveryManager {
 
 		sdata.addRecoveryMessage("mkdir -p /cache/recovery/\n");
 		sdata.addRecoveryMessage("echo 'boot-recovery' >/cache/recovery/command\n");
-		sdata.addRecoveryMessage("echo 'print BeeGees ROM Updater by elegos' > /cache/recovery/extendedcommand\n");
+//		sdata.addRecoveryMessage("echo 'ui_print(\"ROM Manager Version 4.2.1.0\");' > /cache/recovery/extendedcommand\n");
+		sdata.addRecoveryMessage("echo 'ui_print(\"BeeGees ROM Updater by elegos\");' > /cache/recovery/extendedcommand\n");
 
 		sdata.incrementRecoveryCounter();
 		sdata.setLockProcess(false);
@@ -83,7 +98,8 @@ public class RecoveryManager {
 			file = file.substring(8);
 
 		sdata.addRecoveryMessage("print Installing file SDCARD:" + file + "\n");
-		sdata.addRecoveryMessage("echo 'install_zip SDCARD:" + file	+ "' >> /cache/recovery/extendedcommand\n");
+//		sdata.addRecoveryMessage("echo 'install_zip SDCARD:" + file	+ "' >> /cache/recovery/extendedcommand\n");
+		sdata.addRecoveryMessage("echo '--update_package=SDCARD:" + file	+ "' >> /cache/recovery/extendedcommand\n");
 
 		sdata.incrementRecoveryCounter();
 		sdata.setLockProcess(false);
@@ -107,14 +123,16 @@ public class RecoveryManager {
 			Date date = new Date();
 
 			sdata.addRecoveryMessage("mkdir -p " + backupFolder + "\n");
-			sdata.addRecoveryMessage("echo 'print Backing up the current ROM to \""
-					+ backupFolder
-					+ format.format(date)
-					+ "\"' >> /cache/recovery/extendedcommand\n");
-			sdata.addRecoveryMessage("echo 'backup_rom " + backupFolder
-					+ format.format(date)
-					+ "' >> /cache/recovery/extendedcommand\n");
-			sdata.addRecoveryMessage("echo 'nandroid backup'  >> /cache/recovery/command\n");
+//			sdata.addRecoveryMessage("echo 'print Backing up the current ROM to \""
+//					+ backupFolder
+//					+ format.format(date)
+//					+ "\"' >> /cache/recovery/extendedcommand\n");
+//			sdata.addRecoveryMessage("echo 'nandroid backup'  >> /cache/recovery/extendedcommand\n");
+//			sdata.addRecoveryMessage("echo 'ui_print (\"ROM Manager Version 4.2.1.0\");'\n");
+//			sdata.addRecoveryMessage("echo 'ui_print(\"BeeGees ROM Updater by elegos\");' > /cache/recovery/extendedcommand\n");
+			sdata.addRecoveryMessage("echo 'backup_rom(\"" + backupFolder
+			+ format.format(date)
+			+ "\");'" + " >> /cache/recovery/extendedcommand\n");
 		} catch (Exception e) {
 			Log.e(TAG, "Unable to setup environment for Nandroid backup");
 			e.printStackTrace();
@@ -133,9 +151,14 @@ public class RecoveryManager {
 			;
 		sdata.setLockProcess(true);
 
-		sdata.addRecoveryMessage("print Restoring ROM from SDCARD:"
-				+ backupDirectory + "\n");
-		sdata.addRecoveryMessage("echo 'restore_rom /sdcard/" + backupDirectory + "' >> /cache/recovery/extendedcommand\n");
+//		sdata.addRecoveryMessage("print Restoring ROM from SDCARD:"
+//				+ backupDirectory + "\n");
+//		sdata.addRecoveryMessage("echo 'restore_rom /sdcard/" + backupDirectory + "' >> /cache/recovery/extendedcommand\n");
+
+//		sdata.addRecoveryMessage("echo 'ui_print (\"ROM Manager Version 4.2.1.0\");'\n");
+//		sdata.addRecoveryMessage("echo 'ui_print(\"BeeGees ROM Updater by elegos\");' > /cache/recovery/extendedcommand\n");
+		sdata.addRecoveryMessage("echo 'restore_rom(\"" + backupDirectory
+		+ "\", \"boot\", \"system\", \"data\", \"cache\", \"sd-ext\");' >> /cache/recovery/extendedcommand\n");
 
 		sdata.incrementRecoveryCounter();
 		sdata.setLockProcess(false);

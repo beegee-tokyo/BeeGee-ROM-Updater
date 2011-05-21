@@ -100,61 +100,62 @@ public class VersionSelector extends ROMSuperActivity {
 			final SharedData sdata = SharedData.getInstance();
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-			if (!sdata.getRepositoryROMName().equals(SharedData.LOCAL_ROMNAME)) {
-				alert.setMessage(getString(R.string.ask_backup_wipe));
-				alert.setPositiveButton(getString(R.string.backup_and_wipe),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
+//			if (!sdata.getRepositoryROMName().equals(SharedData.LOCAL_ROMNAME)) {
+//				alert.setMessage(getString(R.string.ask_backup_wipe));
+//				alert.setPositiveButton(getString(R.string.backup_and_wipe),
+//						new DialogInterface.OnClickListener() {
+//							@Override
+//							public void onClick(DialogInterface dialog, int which) {
 								// backup and wipe, then update
-								sdata.setRecoveryOperations(3);
-								RecoveryManager.doBackup(VersionSelector.this);
-								RecoveryManager.wipeData();
-								RecoveryManager.addUpdate(sdata.getDownloadedFile());
-								RecoveryManager.rebootRecovery();
-							}
-						});
-				alert.setNeutralButton(getString(R.string.backup_only),new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								// Backup only, then update
-								sdata.setRecoveryOperations(2);
-								RecoveryManager.doBackup(VersionSelector.this);
-								RecoveryManager.addUpdate(sdata.getDownloadedFile());
-								RecoveryManager.rebootRecovery();
-							}
-						});
-				alert.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
+//								sdata.setRecoveryOperations(3);
+//								RecoveryManager.doBackup(VersionSelector.this);
+//								RecoveryManager.wipeData();
+//								RecoveryManager.addUpdate(sdata.getDownloadedFile());
+//								RecoveryManager.rebootRecovery();
+//							}
+//						});
+//				alert.setNeutralButton(getString(R.string.backup_only),new DialogInterface.OnClickListener() {
+//							@Override
+//							public void onClick(DialogInterface dialog, int which) {
+//								// Backup only, then update
+//								sdata.setRecoveryOperations(2);
+//								RecoveryManager.doBackup(VersionSelector.this);
+//								RecoveryManager.addUpdate(sdata.getDownloadedFile());
+//								RecoveryManager.rebootRecovery();
+//							}
+//						});
+//				alert.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+//							@Override
+//							public void onClick(DialogInterface dialog, int which) {
 								// Just update
-								sdata.setRecoveryOperations(1);
-								RecoveryManager.addUpdate(sdata.getDownloadedFile());
-								RecoveryManager.rebootRecovery();
-							}
-						});
-			} else {
+//								sdata.setRecoveryOperations(1);
+//								RecoveryManager.addUpdate(sdata.getDownloadedFile());
+//								RecoveryManager.rebootRecovery();
+//							}
+//						});
+//			} else {
 				// ROM name are the same, just ask to install now
-				alert.setMessage(getString(R.string.upgrade_confirmation))
+//				alert.setMessage(getString(R.string.upgrade_confirmation))
+				alert.setMessage("ROM downloaded to " + DOWNLOAD_DIRECTORY)
 						.setCancelable(false)
 						.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
 										// apply update
-										sdata.setRecoveryOperations(1);
-										RecoveryManager.addUpdate(sdata.getDownloadedFile());
-										RecoveryManager.rebootRecovery();
+//										sdata.setRecoveryOperations(1);
+//										RecoveryManager.addUpdate(sdata.getDownloadedFile());
+//										RecoveryManager.rebootRecovery();
 									}
-								})
-						.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-									@Override
-									public void onClick(DialogInterface dialog, int which) {
-										// end the activity
-										dialog.dismiss();
-										finish();
-									}
+//								})
+//						.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+//									@Override
+//									public void onClick(DialogInterface dialog, int which) {
+//										// end the activity
+//										dialog.dismiss();
+//										finish();
+//									}
 								});
-			}
+//			}
 
 			// create and show the dialog
 			alert.create().show();
