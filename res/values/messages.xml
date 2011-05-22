@@ -25,7 +25,7 @@
 	<string name="error_repository_not_set">You haven\'t set the ROM repository from the settings menu. Clicking on Ok the Settings window will appear.</string>
 	<string name="wipe_sdext_too">Do you want to wipe the SD-EXT partition too?</string>
 	<string name="confirm_restore_backup">Are you sure you want to restore this backup?</string>
-	<string name="ask_backup_wipe">It seems that your ROM name differs from the one you\'ve downloaded. Do you want to wipe, or backup and wipe the user data before updating?</string>
+	<string name="ask_backup_wipe">Do you want to backup your current ROM, wipe data and cache, or just flash this ROM?</string>
 	<string name="info_no_downloads">There are no files in the download directory</string>
 	<string name="info_shared_repo">This list is dynamically created via the anonymous data sent by other users. The author of the application doesn\'t decide which repositories are being displayed, nor is responsible for any of them.</string>
 </resources>

@@ -15,7 +15,7 @@
 	<string name="backup">Backup</string>
 	<string name="backup_rom">Backup the ROM</string>
 	<string name="restore_rom">Restore a ROM backup</string>
-	<string name="recovery">Recovery mode</string>
+	<string name="recovery">Reboot into Recovery</string>
 	<string name="rom_repository">ROM Repository</string>
 	<string name="pref_other">Other settings</string>
 	<string name="send_anon_title">Send anonymous data</string>
@@ -43,7 +43,8 @@
 	<string name="important">Important</string>
 	<string name="delete_backup">Delete the backup</string>
 	<string name="delete_zip">Delete the file</string>
-	<string name="backup_and_wipe">Backup and wipe</string>
-	<string name="backup_only">Backup only</string>
+	<string name="backup_and_wipe">Backup + Wipe + Flash</string>
+	<string name="backup_only">Backup + Flash</string>
 	<string name="loading">Loading, please wait...</string>
+	<string name="flash">Flash only</string>
 </resources>

@@ -103,14 +103,10 @@ public class VersionsList extends ROMSuperActivity {
 								.getItemAtPosition(position).toString();
 						Log.i(TAG, "ITEM: " + selectedItem);
 
-//						String version = selectedItem.substring(selectedItem.lastIndexOf(" ") + 1);
-
 						String ver = shared.getRepositoryROMName() + " ";
-						
-//						String version = selectedItem.substring(ver.length(),selectedItem.length()-7));
 						String version = selectedItem.substring(ver.length(),selectedItem.length()-7);
-
 						String changelog = "";
+
 						ROMVersion currentVersion = new ROMVersion();
 						Iterator<ROMVersion> iVersion = modVersions.iterator();
 
@@ -261,12 +257,14 @@ public class VersionsList extends ROMSuperActivity {
 			checkModVersion  = checkModVersion.replace('i','9');
 			checkModVersion  = checkModVersion.replace('.','0');
 			
+			int checklen = checkModVersion.length();
 			if (checkModVersion.length()<=5){
-				for (int b=1;b==5-checkModVersion.length();b++){
+				for (int b=1;b<=6-checkModVersion.length();b++){
 					checkModVersion = checkModVersion + "0";}
 			}
+			checklen = checkModVersion.length();
 			if (checkLocalVersion.length()<=5){
-				for (int a=1;a==5-checkLocalVersion.length();a++){
+				for (int a=1;a<=6-checkLocalVersion.length();a++){
 					checkLocalVersion = checkLocalVersion + "0";}
 			}
 			

@@ -94,6 +94,7 @@ public class Preferences extends PreferenceActivity {
 			builder.setIcon(R.drawable.ic_menu_info)
 					.setTitle(getString(R.string.app_name) + " v." + version)
 					.setMessage(
+							// unchanged link to original author
 							SharedData.ABOUT_LICENCE
 									+ "\n\nPlease donate via PayPal to giacomo.furlan@fastwebnet.it.\nThanks\n\nGiacomo 'elegos' Furlan")
 					.setCancelable(false)

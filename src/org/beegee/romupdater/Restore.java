@@ -44,8 +44,7 @@ public class Restore extends ROMSuperActivity {
 								SharedData shared = SharedData.getInstance();
 								SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Restore.this);
 
-								backupDirectory = prefs.getString(
-										"backup_folder", "");
+								backupDirectory = prefs.getString("backup_folder", "");
 								if (!backupDirectory.endsWith("/"))
 									backupDirectory += "/";
 

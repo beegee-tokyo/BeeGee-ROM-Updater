@@ -24,12 +24,10 @@ public class SharedData {
 	static SharedData mInstance;
 
 	public static final String LOCAL_MODEL = android.os.Build.MODEL;
-//	public static final String LOCAL_ROMNAME = android.os.Build.DISPLAY;
-//	public static final String LOCAL_VERSION = android.os.Build.VERSION.INCREMENTAL;
 	public static String LOCAL_ROMNAME = BuildParser.parseString("ro.beegee.romname");
 	public static String LOCAL_VERSION = BuildParser.parseString("ro.beegee.romversion");
 
-	public static final String ABOUT_LICENCE = "BeeGee ROM Updater Copyright (C) 2011 by beegee_tokyo\nbased on\nCopyright (C) 2011 by elegos\nThis program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it under certain conditions;";
+	public static final String ABOUT_LICENCE = "BeeGee ROM Updater Copyright (C) 2011 by beegee_tokyo\nbased on\nROM Updater Copyright (C) 2011 by elegos\nThis program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it under certain conditions;";
 
 	private String repositoryModel;
 	private String repositoryROMName;
