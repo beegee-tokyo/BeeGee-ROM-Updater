@@ -31,7 +31,7 @@ import android.view.MenuItem;
 public class ROMSuperActivity extends Activity {
 	private ProgressDialog progress;
 	protected AlertDialog.Builder alert;
-	public static final String DOWNLOAD_DIRECTORY = "/sdcard/romupdater/";
+	public static final String DOWNLOAD_DIRECTORY = "/sdcard/1ROM/";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
