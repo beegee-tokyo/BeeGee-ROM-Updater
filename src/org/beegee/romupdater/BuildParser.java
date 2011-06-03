@@ -7,7 +7,6 @@ public class BuildParser {
 
 	private static String readProperty(String prop) {
 		File propFile = new File(build_prop);
-
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
 		DataInputStream dis = null;
