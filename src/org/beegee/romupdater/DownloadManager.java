@@ -20,7 +20,6 @@ package org.beegee.romupdater;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
